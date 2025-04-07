@@ -1,0 +1,148 @@
+.team {
+  width: 100%;
+  height: 100vh;
+  text-align: center;
+  overflow: hidden;
+  position: relative;
+  user-select: none;
+  font-family: "Audiowide", sans-serif;
+}
+
+.team .slider {
+  position: absolute;
+  width: 200px;
+  height: 250px;
+  top: 25%;
+  left: calc(50% - 100px);
+  transform-style: preserve-3d;
+  transform: perspective(2500px);
+  animation: autoRun 30s linear infinite;
+  z-index: 2;
+}
+
+.team .slider::after,
+.team .slider::before {
+  content: "Team 16";
+  width: 300%;
+  height: 150%;
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10rem;
+  background-color: transparent;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  color: transparent;
+  background-image: linear-gradient(120deg, #ff0000, #334eff);
+  border-radius: 1rem;
+  background-clip: text;
+}
+
+.team .slider::before {
+  filter: blur(20px);
+  opacity: 0.7;
+}
+
+.team .slider .item {
+  height: 350px;
+  position: absolute;
+  inset: 0 0 0 0;
+  transform: rotateY(
+      calc((var(--position) - 1) * (360 / var(--quantity)) * 1deg)
+    )
+    translateZ(500px);
+}
+
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.item::after,
+.item::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  z-index: -1;
+  padding: 1rem;
+  background-image: conic-gradient(
+    from var(--angle),
+    #334eff,
+    #ff0000,
+    #334eff
+  );
+  border-radius: 1rem;
+  animation: 3s spin linear infinite;
+}
+
+.item::before {
+  filter: blur(1.5rem);
+}
+
+.team .slider .item .content {
+  width: 200px;
+  height: 350px;
+  background: #000;
+  border-radius: 1rem;
+}
+
+.team .slider .item .content img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 1rem;
+  padding: 0;
+  position: relative;
+}
+
+@keyframes spin {
+  from {
+    --angle: 0deg;
+  }
+  to {
+    --angle: 360deg;
+  }
+}
+
+@keyframes autoRun {
+  from {
+    transform: perspective(2500px) rotateY(0deg);
+  }
+  to {
+    transform: perspective(2500px) rotateY(360deg);
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  .item::after,
+  .item::before {
+    background-image: conic-gradient(from var(--angle), #3cf, #c3f, #3cf);
+  }
+
+  .team .slider::after,
+  .team .slider::before {
+    background-image: linear-gradient(270deg, #3cf, #c3f);
+  }
+
+  .team .slider .item .content {
+    background: #ffef;
+    color: #c3f;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .team .slider::after,
+  .team .slider::before {
+    width: 200%;
+    font-size: 6rem;
+  }
+}

@@ -5,8 +5,6 @@ import logo from '../assets/SignSynthLogo.png';
 function Navbar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [activeSection, setActiveSection] = useState('home');
-    const [activeSectionIndex, setActiveSectionIndex] = useState(0);
-
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
@@ -18,36 +16,22 @@ function Navbar() {
         }
     };
 
+    const handleClick = () =>{
+        setActiveSection('home');
+    }
+
     useEffect(() => {
         document.addEventListener('click', closeMenu);
         return () => document.removeEventListener('click', closeMenu);
     }, [isMenuOpen]);
 
-    // Scroll spy effect
-    useEffect(() => {
-        const handleScroll = () => {
-            const sections = ['home', 'product', 'demo', 'team'];
-            for (const id of sections) {
-                const element = document.getElementById(id);
-                if (element) {
-                    const rect = element.getBoundingClientRect();
-                    if (rect.top <= 150 && rect.bottom >= 150) {
-                        setActiveSection(id);
-                        break;
-                    }
-                }
-            }
-        };
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
 
     return (
         <div className="navbar">
-            <div className="logo">
+            <a className="logo" href='#home' onClick={handleClick}>
                 <img src={logo} alt="SignSynth Logo" />
                 <h2>SignSynth</h2>
-            </div>
+            </a>
 
             <div className="menu" onClick={toggleMenu}>
                 {!isMenuOpen ?

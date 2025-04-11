@@ -5,7 +5,7 @@
   box-sizing: border-box;
   text-align: center;
   font-family: Poppins;
-  overflow: clip;
+  overflow-x: clip;
 }
 
 .product .overview {
@@ -83,24 +83,24 @@
 }
 
 .autoShowPC {
-  animation: autoShowAnimation both;
+  animation: autoShowAnimation both linear;
   animation-timeline: view(70% 15%);
 }
 
 .slide1 {
-  animation: slideRight both;
+  animation: slideRight both linear;
   animation-timeline: view(70% 15%);
 }
 .slide2 {
-  animation: slideBottom both;
+  animation: slideBottom both linear;
   animation-timeline: view(70% 15%);
 }
 .slide3 {
-  animation: slideTop both;
+  animation: slideTop both linear;
   animation-timeline: view(70% 15%);
 }
 .slide4 {
-  animation: slideLeft both;
+  animation: slideLeft both linear;
   animation-timeline: view(70% 15%);
 }
 
@@ -128,7 +128,7 @@
   }
   .autoShow {
     animation: autoShowAnimation both linear;
-    animation-timeline: view(70% 15%);
+    animation-timeline: view(90% 5%);
   }
 }
 

@@ -6,7 +6,7 @@ import vijayT from '../assets/vijayT.jpg';
 
 function Team() {
     return (
-        <div id='team' className='team'>
+        <div id='team' className='team section'>
             <h1>Meet The Team</h1>
             <div className="slider" style={{ "--quantity": 4 }}>
                 <div className="item" style={{ "--position": 1 }}>

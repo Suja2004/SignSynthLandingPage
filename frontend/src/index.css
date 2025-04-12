@@ -1,7 +1,7 @@
 @import url("https://fonts.cdnfonts.com/css/ica-rubrik-black");
 @import url("https://fonts.cdnfonts.com/css/poppins");
 html {
-  scroll-padding-top: 120px;
+  scroll-padding-top: 90px;
 }
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;

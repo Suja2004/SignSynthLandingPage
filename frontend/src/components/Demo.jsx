@@ -42,7 +42,7 @@ function Demo() {
     return (
         <div
             id="demo"
-            className="demo"
+            className="demo section"
             onMouseMove={handleMouseMove}
             onMouseUp={handleMouseUp}
             onMouseLeave={handleMouseUp}

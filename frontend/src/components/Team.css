@@ -1,11 +1,12 @@
 .team {
   width: 100%;
-  height: 100vh;
+  height: 83vh;
   text-align: center;
   overflow: hidden;
   position: relative;
   user-select: none;
   font-family: "Audiowide", sans-serif;
+  padding-top: 60px;
 }
 
 .team .slider {
@@ -16,7 +17,7 @@
   left: calc(50% - 100px);
   transform-style: preserve-3d;
   transform: perspective(2500px);
-  animation: autoRun 30s linear infinite;
+  animation: autoRun 20s linear infinite;
   z-index: 2;
 }
 
@@ -38,13 +39,15 @@
   -webkit-backdrop-filter: blur(20px);
   color: transparent;
   background-image: linear-gradient(120deg, #ff0000, #334eff);
-  border-radius: 1rem;
   background-clip: text;
+  border-radius: 1rem;
+  backface-visibility: hidden;
 }
 
 .team .slider::before {
-  filter: blur(20px);
-  opacity: 0.7;
+  top: -10%;
+  left: -80%;
+  transform: rotateY(180deg);
 }
 
 .team .slider .item {
@@ -118,7 +121,7 @@
     transform: perspective(2500px) rotateY(0deg);
   }
   to {
-    transform: perspective(2500px) rotateY(360deg);
+    transform: perspective(2500px) rotateY(-360deg);
   }
 }
 

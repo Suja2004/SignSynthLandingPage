@@ -6,17 +6,37 @@
 }
 
 .demo .container {
+  width: 100%;
+  height: 50%;
   display: flex;
   justify-content: center;
-  height: 50%;
+  overflow-x: clip;
+}
+
+.demo p {
+  color: light-dark(#000, #fff);
 }
 
 .demo .container .sideByside {
+  width: auto;
   display: flex;
+}
+
+.demo .container .sideByside .media {
+  scale: 0;
+  opacity: 0;
+  animation: zoom linear both;
+  animation-timeline: view(90% 5%);
+}
+.demo .container .sideByside .sign {
+  animation: slideLeft linear both;
+  animation-timeline: view(90% 5%);
 }
 
 .demo .container .overlay .media {
   position: relative;
+  animation: slideLeft linear both;
+  animation-timeline: view(90% 5%);
 }
 
 .demo .container .overlay img:last-child {
@@ -38,6 +58,7 @@
 }
 
 .demo .container .modeButtons {
+  min-width: 300px;
   border: 2px solid #fff;
   border-radius: 1rem;
   background-image: linear-gradient(
@@ -45,6 +66,8 @@
     rgba(255, 255, 255, 0.3),
     rgba(0, 0, 0, 0.6)
   );
+  animation: slideRight linear both;
+  animation-timeline: view(90% 5%);
 }
 
 .demo .container .modes {
@@ -56,17 +79,31 @@
 }
 
 .demo .container .modes button {
-  padding: 0.5rem 1rem;
+  padding: 1rem 1.5rem;
   background: transparent;
   color: #fff;
-  border: 2px solid currentColor;
+  border: 2px solid #fff;
   font-weight: bold;
   cursor: pointer;
+  transition: all 0.5s;
+  border-radius: 1rem;
+}
+.demo .container .modes button:hover,
+.demo .container .modes button.active {
+  background: light-dark(#3cf, #fff);
+  color: light-dark(#fff, #333);
 }
 
 @media screen and (max-width: 800px) {
   .demo h1 {
     font-size: 1.4rem;
+    animation: autoShowAnimation both;
+    animation-timeline: view(65% 5%);
+  }
+
+  .demo p {
+    animation: autoShowAnimation both;
+    animation-timeline: view(80% 5%);
   }
 
   .demo .container {
@@ -74,9 +111,18 @@
     margin: auto;
     display: flex;
     flex-direction: column;
+    overflow-x: clip;
   }
 
-  .demo .container .modes {
+  .demo .container .modeButtons {
+    scale: 0.8;
+    opacity: 0;
+    animation: fadeIn linear forwards;
+    animation-timeline: view();
+    animation-range: 250px 500px;
+  }
+
+  .demo .container .modeButtons .modes {
     display: flex;
     flex-direction: row;
   }
@@ -89,11 +135,46 @@
   .demo .container .overlay img:last-child {
     width: 150px;
   }
+
+  .demo .container .sideByside .media {
+    scale: 1;
+    opacity: 1;
+    animation: slideRight both;
+    animation-timeline: view(65% 5%);
+  }
+
+  .demo .container .sideByside .sign {
+    animation: slideLeft both;
+    animation-timeline: view(65% 5%);
+  }
+
+  .demo .container .overlay .media {
+    position: relative;
+    scale: 0;
+    opacity: 0;
+    animation: zoom linear forwards;
+    animation-timeline: view();
+    animation-range: 250px 400px;
+  }
 }
 
 @media (prefers-color-scheme: light) {
   .demo .container .modeButtons,
   .demo .sideByside img {
     background-image: linear-gradient(-120deg, #3cf, #c3f);
+  }
+}
+
+@keyframes zoom {
+  to {
+    scale: 1;
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  to {
+    scale: 1;
+    opacity: 1;
   }
 }

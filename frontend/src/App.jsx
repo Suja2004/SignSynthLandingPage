@@ -1,23 +1,34 @@
-import './App.css'
+import { Routes, Route } from 'react-router-dom';
+import './App.css';
 import Navbar from './components/Navbar';
 import Home from './components/Home';
 import Product from './components/Product';
 import Demo from './components/Demo';
-import Team from './components/Team';
+import Slider from './components/Slider';
 import Footer from './components/Footer';
+import Team from './components/Team';
 
 function App() {
-
   return (
-    <div>
+    <>
       <Navbar />
-      <Home />
-      <Product />
-      <Demo />
-      <Team />
-      <Footer />
-    </div>
-  )
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <>
+              <Home />
+              <Product />
+              <Demo />
+              <Slider />
+              <Footer />
+            </>
+          }
+        />
+        <Route path="/team" element={<Team />} />
+      </Routes>
+    </>
+  );
 }
 
-export default App
+export default App;

@@ -1,24 +1,35 @@
 .footer {
   box-sizing: border-box;
   width: 100%;
-  height: 10vh;
+  height: 70px;
   background-color: transparent;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(20px);
   background-image: linear-gradient(
-    -120deg,
-    rgba(255, 255, 255, 0.866),
-    rgb(0, 0, 0)
+    120deg,
+    rgba(255, 255, 255, 0.3),
+    rgba(0, 0, 0, 0.6)
   );
   text-align: center;
   padding-top: 0.5rem;
   font-family: "Audiowide", sans-serif;
   font-size: 0.9rem;
-  color: light-dark(#fff, #222);
+  cursor: pointer;
+}
+
+.footer h2 {
+  background: linear-gradient(to left, #f90000, #334eff);
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 3px 0 #000);
 }
 
 @media (prefers-color-scheme: light) {
   .footer {
     background-image: linear-gradient(120deg, #ec00f9, #00d8f9);
+  }
+  .footer h2 {
+    background-image: linear-gradient(to right, #fff);
+    filter: drop-shadow(0 3px 0 #3cf);
   }
 }

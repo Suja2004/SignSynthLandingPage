@@ -40,7 +40,7 @@ function Demo() {
     };
 
     return (
-        <div
+        <section
             id="demo"
             className="demo section"
             onMouseMove={handleMouseMove}
@@ -54,8 +54,8 @@ function Demo() {
                 <div className="modeButtons">
                     <h3>Modes</h3>
                     <div className="modes">
-                        <button onClick={() => setSideBySide(true)}>Side By Side</button>
-                        <button onClick={() => setSideBySide(false)}>Overlay</button>
+                        <button className={sideBySide?"active":""} onClick={() => setSideBySide(true)}>Side By Side</button>
+                        <button className={!sideBySide?"active":""} onClick={() => setSideBySide(false)}>Overlay</button>
                     </div>
                 </div>
 
@@ -89,7 +89,7 @@ function Demo() {
             </div>
 
             <p><b>Note:</b> This is a prototype. Real-time translation performance may vary depending on your device or browser.</p>
-        </div>
+        </section>
     );
 }
 

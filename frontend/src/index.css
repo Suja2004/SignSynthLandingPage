@@ -2,6 +2,7 @@
 @import url("https://fonts.cdnfonts.com/css/poppins");
 html {
   scroll-padding-top: 90px;
+  /* scroll-padding-bottom: 90px; */
 }
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -19,6 +20,10 @@ html {
 h1 {
   font-family: "Audiowide", sans-serif;
   color: light-dark(#333333c1, #ffef);
+}
+
+p{
+  font-family: Poppins;
 }
 
 @media (prefers-color-scheme: light) {

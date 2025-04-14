@@ -1,14 +1,14 @@
 import { useState, useEffect } from 'react';
+import { NavLink, useLocation } from 'react-router-dom';
 import './Navbar.css';
 import logo from '../assets/SignSynthLogo.png';
 
 function Navbar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [activeSection, setActiveSection] = useState('home');
+    const location = useLocation();
 
-    const toggleMenu = () => {
-        setIsMenuOpen(!isMenuOpen);
-    };
+    const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
     const closeMenu = (e) => {
         if (isMenuOpen && !e.target.closest('.navbar-links') && !e.target.closest('.hamburger')) {
@@ -16,78 +16,55 @@ function Navbar() {
         }
     };
 
-    const handleClick = () => {
-        setActiveSection('home');
-    };
-
     useEffect(() => {
         document.addEventListener('click', closeMenu);
         return () => document.removeEventListener('click', closeMenu);
     }, [isMenuOpen]);
 
-    // 💡 Highlight active section while scrolling
+
     useEffect(() => {
-        const sections = document.querySelectorAll('.section');
-        const navLinks = document.querySelectorAll('.navbar-links a');
-
-        const handleScroll = () => {
-            let current = '';
-
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-
-                if (window.pageYOffset >= sectionTop - 100) {
-                    current = section.getAttribute('id');
-                }
-            });
-            setActiveSection(current);
-
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href').substring(1) === current) {
-                    link.classList.add('active');
-                }
-            });
-        };
-
-        window.addEventListener('scroll', handleScroll);
-        handleScroll();
-
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
-
+        const hash = location.hash.replace('#', '') || 'team';
+        setActiveSection(hash);
+    }, [location]);
 
     return (
         <div className="navbar">
-            <a className="logo" href="#home" onClick={handleClick}>
+            <a className="logo" href="/#home" onClick={() => setActiveSection('home')}>
                 <img src={logo} alt="SignSynth Logo" />
                 <h2>SignSynth</h2>
             </a>
 
             <div className="menu" onClick={toggleMenu}>
-                {!isMenuOpen ? (
-                    <div className="hamburger">
-                        <span></span><span></span><span></span>
-                    </div>
-                ) : (
-                    <div className="hamburger close">
-                        <span></span><span></span><span></span>
-                    </div>
-                )}
+                <div className={`hamburger${isMenuOpen ? ' close' : ''}`}>
+                    <span></span><span></span><span></span>
+                </div>
             </div>
 
             <nav className={`navbar-links ${isMenuOpen ? 'open' : ''}`}>
-                {['home', 'product', 'demo', 'team'].map((id) => (
-                    <li key={id}>
-                        <a
-                            href={`#${id}`}
-                            className={activeSection === id ? 'active' : ''}
-                            onClick={() => setActiveSection(id)}
-                        >
-                            {id.toUpperCase()}
-                        </a>
-                    </li>
-                ))}
+                <li>
+                    <a href="/#home" className={`homelink ${activeSection === 'home' ? 'active' : ''}`}>
+                        HOME
+                    </a>
+                </li>
+                <li>
+                    <a href="/#product" className={`productlink ${activeSection === 'product' ? 'active' : ''}`}>
+                        PRODUCT
+                    </a>
+                </li>
+                <li>
+                    <a href="/#demo" className={`demolink ${activeSection === 'demo' ? 'active' : ''}`}>
+                        DEMO
+                    </a>
+                </li>
+                <li>
+                    <NavLink
+                        to="/team"
+                        className={`teamlink ${activeSection === 'team' ? 'active' : ''}`}
+                        onClick={() => setActiveSection('team')}
+                    >
+                        TEAM
+                    </NavLink>
+                </li>
             </nav>
         </div>
     );

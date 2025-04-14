@@ -14,7 +14,7 @@
 .home h1 {
   width: 70%;
   font-size: 3rem;
-  background: linear-gradient(to right, #3cf, #ff3333);
+  background: linear-gradient(to right, #334eff, #ff3333);
   background-clip: text;
   color: transparent;
   user-select: none;
@@ -22,7 +22,7 @@
 
 .home p {
   width: 50%;
-  color: light-dark(#216674, #d8cf83);
+  color: light-dark(#26a82d, #d8cf83);
   font-weight: 700;
   font-family: Poppins;
   user-select: none;
@@ -52,7 +52,7 @@
   top: 0;
   left: 0;
   inset: 0;
-  background: linear-gradient(45deg, #f06, #3cf, #f06);
+  background: linear-gradient(45deg, #f06, #334eff, #f06);
   background-size: 200%;
   background-position: 0 0;
   z-index: -1;
@@ -61,7 +61,7 @@
   transition: 0.5s ease;
 }
 
-.home .btn:hover:before {
+.home .btn:hover::before {
   background-position: 100% 0;
 }
 
@@ -71,7 +71,7 @@
   top: 0;
   left: 0;
   inset: 0;
-  background: linear-gradient(45deg, #f06, #3cf, #f06);
+  background: linear-gradient(45deg, #f06, #334eff, #f06);
   background-position: 0 0;
   z-index: -1;
   border-radius: 10px;
@@ -79,8 +79,8 @@
   transition: 0.5s ease;
 }
 
-.home .btn:hover:after {
-  background-position: 100% 0;
+.home .btn:hover::after {
+  background-position: 100% 10%;
 }
 
 .zoom {
@@ -107,6 +107,10 @@
 @media (prefers-color-scheme: light) {
   .home h1 {
     background-image: linear-gradient(to right, #ec00f9, #00d8f9);
+  }
+  .home .btn::after,
+  .home .btn::before {
+    background-image: linear-gradient(45deg, #ec00f9, #00d8f9, #ec00f9);
   }
 }
 

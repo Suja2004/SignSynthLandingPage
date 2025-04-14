@@ -2,7 +2,7 @@ import './Product.css';
 import working from "../assets/working.png";
 function Product() {
     return (
-        <div id="product" className="product section">
+        <section id="product" className="product section">
             <h1 className='autoShow autoShowPC'>"Meet SignSynth – AI-Powered Sign Language Translator"</h1>
             <div className="overview autoShow autoShowPC">
                 <div className="content ">
@@ -40,7 +40,7 @@ function Product() {
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
     )
 }
 

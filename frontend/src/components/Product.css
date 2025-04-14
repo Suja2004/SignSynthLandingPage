@@ -62,7 +62,7 @@
 }
 
 .product .features .featureslist .feature {
-  max-height: 300px;
+  min-height: max-content;
   border: 2px solid #fff;
   border-radius: 1rem;
   padding: 0.5rem;
@@ -84,24 +84,24 @@
 
 .autoShowPC {
   animation: autoShowAnimation both linear;
-  animation-timeline: view(70% 15%);
+  animation-timeline: view(80% 5%);
 }
 
 .slide1 {
   animation: slideRight both linear;
-  animation-timeline: view(70% 15%);
+  animation-timeline: view(80% 25%);
 }
 .slide2 {
   animation: slideBottom both linear;
-  animation-timeline: view(70% 15%);
+  animation-timeline: view(80% 25%);
 }
 .slide3 {
   animation: slideTop both linear;
-  animation-timeline: view(70% 15%);
+  animation-timeline: view(80% 25%);
 }
 .slide4 {
   animation: slideLeft both linear;
-  animation-timeline: view(70% 15%);
+  animation-timeline: view(80% 25%);
 }
 
 @media screen and (max-width: 800px) {
@@ -125,10 +125,6 @@
       "item2"
       "item3"
       "item4";
-  }
-  .autoShow {
-    animation: autoShowAnimation both linear;
-    animation-timeline: view(90% 5%);
   }
 }
 

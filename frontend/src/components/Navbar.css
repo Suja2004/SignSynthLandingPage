@@ -18,7 +18,7 @@ a {
   justify-content: space-between;
   align-items: center;
   padding: 0 2rem;
-  box-shadow: 0 0 10px;
+  box-shadow: 0 0 10px #f90000;
   background-color: transparent;
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
@@ -111,7 +111,6 @@ a {
   color: light-dark(#c3f, #334eff);
   border-bottom: 2px solid currentColor;
 }
-
 
 @media (max-width: 768px) {
   .navbar {

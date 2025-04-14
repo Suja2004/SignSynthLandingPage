@@ -15,6 +15,25 @@ html {
     rgba(0, 0, 0, 0.6)
   );
   background-attachment: fixed;
+  --color1: light-dark(#fff, #333);
+  --color2: light-dark(#3cf, #334eff);
+  --color3: light-dark(#c3f, #f90000);
+}
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(--color1);
+}
+
+::-webkit-scrollbar-track:hover {
+  background-color: var(--color3);
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 1rem;
+  background-image: linear-gradient(to top, var(--color2) 10%, transparent 80%);
 }
 
 h1 {
@@ -22,7 +41,7 @@ h1 {
   color: light-dark(#333333c1, #ffef);
 }
 
-p{
+p {
   font-family: Poppins;
 }
 

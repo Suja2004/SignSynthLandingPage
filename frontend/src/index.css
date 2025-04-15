@@ -2,7 +2,6 @@
 @import url("https://fonts.cdnfonts.com/css/poppins");
 html {
   scroll-padding-top: 90px;
-  /* scroll-padding-bottom: 90px; */
 }
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -17,8 +16,9 @@ html {
   background-attachment: fixed;
   --color1: light-dark(#fff, #333);
   --color2: light-dark(#3cf, #334eff);
-  --color3: light-dark(#c3f, #f90000);
+  user-select: none;
 }
+
 ::-webkit-scrollbar {
   width: 10px;
   height: 10px;
@@ -28,9 +28,6 @@ html {
   background-color: var(--color1);
 }
 
-::-webkit-scrollbar-track:hover {
-  background-color: var(--color3);
-}
 ::-webkit-scrollbar-thumb {
   border-radius: 1rem;
   background-image: linear-gradient(to top, var(--color2) 10%, transparent 80%);
@@ -47,6 +44,9 @@ p {
 
 @media (prefers-color-scheme: light) {
   :root {
-    background-image: linear-gradient(rgb(255, 255, 255));
+    background-image: linear-gradient(-120deg, #ffffff, #fff);
+  }
+  body {
+    background-image: linear-gradient(-120deg, #ffffff, #fff);
   }
 }

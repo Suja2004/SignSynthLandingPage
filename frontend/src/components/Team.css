@@ -9,6 +9,12 @@
   padding-top: 60px;
 }
 
+.team {
+  mask-image: url("../assets/ink.gif");
+  mask-repeat: no-repeat;
+  mask-size: cover;
+  mask-position: center;
+}
 .team .slider {
   position: absolute;
   width: 200px;
@@ -19,6 +25,10 @@
   transform: perspective(2500px);
   animation: autoRun 20s linear infinite;
   z-index: 2;
+}
+
+.team .slider:hover {
+  animation-play-state: paused;
 }
 
 .team .slider::after,
@@ -96,6 +106,7 @@
   height: 350px;
   background: #000;
   border-radius: 1rem;
+  position: relative;
 }
 
 .team .slider .item .content img {
@@ -107,22 +118,40 @@
   position: relative;
 }
 
-@keyframes spin {
-  from {
-    --angle: 0deg;
-  }
-  to {
-    --angle: 360deg;
-  }
+.team .slider .item .content .info {
+  position: absolute;
+  top: 0;
+  left: 120%;
+  width: 200px;
+  background-color: transparent;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  background: light-dark(#ffffffa5, #000000a5);
+  padding: 1rem;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-@keyframes autoRun {
-  from {
-    transform: perspective(2500px) rotateY(0deg);
-  }
-  to {
-    transform: perspective(2500px) rotateY(-360deg);
-  }
+.team .slider .item .content .info .socials {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  gap: 10px;
+}
+
+.team .slider .item .content .info .socials img {
+  width: 50px;
+  height: 50px;
+  border-radius: 0.3rem;
+  filter: drop-shadow(0 0 10px #fff);
+  opacity: 0.8;
+  transition: scale 0.3s ease-in-out;
+}
+
+.team .slider .item .content .info .socials img:hover {
+  scale: 1.1;
 }
 
 @media (prefers-color-scheme: light) {
@@ -140,12 +169,59 @@
     background: #ffef;
     color: #c3f;
   }
+  .team .slider .item .content .info .socials img {
+    filter: drop-shadow(0 0 10px #3cf);
+  }
 }
 
 @media screen and (max-width: 800px) {
+  .team .slider:hover {
+    animation-play-state: paused;
+  }
+
   .team .slider::after,
   .team .slider::before {
     width: 200%;
     font-size: 6rem;
+  }
+
+  .team .slider .item .content .info {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 168px;
+    min-height: 315px;
+    height: max-content;
+    transform: translateY(350px);
+    opacity: 0;
+    transition: all 0.5s linear;
+  }
+
+  .team .slider .item .content:hover .info {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .team .slider .item .content .info .socials img {
+    width: 35px;
+    height: 35px;
+  }
+}
+
+@keyframes spin {
+  from {
+    --angle: 0deg;
+  }
+  to {
+    --angle: 360deg;
+  }
+}
+
+@keyframes autoRun {
+  from {
+    transform: perspective(2500px) rotateY(0deg);
+  }
+  to {
+    transform: perspective(2500px) rotateY(-360deg);
   }
 }

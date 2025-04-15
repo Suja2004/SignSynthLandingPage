@@ -7,6 +7,15 @@ import mediapipe from "../assets/icons/mediapipe.png";
 
 import './Slider.css';
 
+const techStack = [
+    { img: react, alt: "React", name: "React" },
+    { img: css, alt: "CSS3", name: "CSS3" },
+    { img: python, alt: "Python", name: "Python" },
+    { img: tkinter, alt: "Tkinter", name: "Tkinter" },
+    { img: vosk, alt: "Vosk", name: "Vosk" },
+    { img: mediapipe, alt: "MediaPipe", name: "MediaPipe" }
+];
+
 const Slider = () => {
     return (
         <section id="slider" className="techslider">
@@ -14,38 +23,16 @@ const Slider = () => {
                 <h1>Tech Stack</h1>
                 <div
                     className="tech-container"
-                    style={{ "--quantity": 6, "--time": "12s" }}
+                    style={{ "--quantity": techStack.length, "--time": "12s" }}
                 >
-                    <div className="tech-card" style={{ "--position": 1 }}>
-                        <div className="tech-icon">
-                            <img src={react} alt="react" title="REACT" />
+                    {techStack.map((tech, index) => (
+                        <div className="tech-card" style={{ "--position": index + 1 }} key={index}>
+                            <div className="tech-icon">
+                                <img src={tech.img} alt={tech.alt} />
+                                <p>{tech.name}</p>
+                            </div>
                         </div>
-                    </div>
-                    <div className="tech-card" style={{ "--position": 2 }}>
-                        <div className="tech-icon">
-                            <img src={css} alt="css" title="CSS" />
-                        </div>
-                    </div>
-                    <div className="tech-card" style={{ "--position": 3 }}>
-                        <div className="tech-icon">
-                            <img src={python} alt="python" title="PYTHON" />
-                        </div>
-                    </div>
-                    <div className="tech-card" style={{ "--position": 4 }}>
-                        <div className="tech-icon">
-                            <img src={tkinter} alt="tkinter" title="TKINTER" />
-                        </div>
-                    </div>
-                    <div className="tech-card" style={{ "--position": 5 }}>
-                        <div className="tech-icon">
-                            <img src={vosk} alt="vosk" title="VOSK" />
-                        </div>
-                    </div>
-                    <div className="tech-card" style={{ "--position": 6 }}>
-                        <div className="tech-icon">
-                            <img src={mediapipe} alt="mediapipe" title="MEDIAPIPE" />
-                        </div>
-                    </div>
+                    ))}
                 </div>
             </div>
         </section>

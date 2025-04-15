@@ -18,7 +18,7 @@ a {
   justify-content: space-between;
   align-items: center;
   padding: 0 2rem;
-  box-shadow: 0 0 10px #f90000;
+  box-shadow: 0 0 10px currentColor;
   background-color: transparent;
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
@@ -41,6 +41,7 @@ a {
   background-clip: text;
   color: transparent;
   font-size: 1rem;
+  filter: drop-shadow(0 3px 0 #000);
 }
 
 .logo img {
@@ -112,10 +113,11 @@ a {
   border-bottom: 2px solid currentColor;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 800px) {
   .navbar {
     width: 91%;
   }
+  
   .hamburger {
     display: flex;
   }
@@ -151,9 +153,10 @@ a {
 @media (prefers-color-scheme: light) {
   .logo {
     background-image: linear-gradient(to right, #ec00f9, #00d8f9);
+    filter: drop-shadow(0 3px 0 #fff);
   }
   .navbar {
-    background-image: linear-gradient(120deg, #cc33ff80, #33ccff80, #ffffff80);
+    background-image: linear-gradient(120deg, #cc33ff80, #33ccff80);
   }
 }
 

@@ -23,7 +23,8 @@ function Navbar() {
 
 
     useEffect(() => {
-        const hash = location.hash.replace('#', '') || 'team';
+        let hash = location.hash.replace('#', '') || 'home';
+        if(location.pathname === '/team') hash = 'team';
         setActiveSection(hash);
     }, [location]);
 

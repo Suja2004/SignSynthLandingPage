@@ -1,9 +1,9 @@
 import react from "../assets/icons/atom.png";
 import css from "../assets/icons/css-3.png";
 import python from "../assets/icons/python.png";
-import tkinter from "../assets/icons/tkinter.png";
+import panda3d from "../assets/icons/panda3d.png";
 import vosk from "../assets/icons/vosk.png";
-import mediapipe from "../assets/icons/mediapipe.png";
+import blender from "../assets/icons/blender.png";
 
 import './Slider.css';
 
@@ -11,9 +11,9 @@ const techStack = [
     { img: react, alt: "React", name: "React" },
     { img: css, alt: "CSS3", name: "CSS3" },
     { img: python, alt: "Python", name: "Python" },
-    { img: tkinter, alt: "Tkinter", name: "Tkinter" },
+    { img: panda3d, alt: "Panda3D", name: "Panda3D" },
     { img: vosk, alt: "Vosk", name: "Vosk" },
-    { img: mediapipe, alt: "MediaPipe", name: "MediaPipe" }
+    { img: blender, alt: "Blender", name: "Blender" }
 ];
 
 const Slider = () => {

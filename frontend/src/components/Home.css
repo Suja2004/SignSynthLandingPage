@@ -18,14 +18,22 @@
   background-clip: text;
   color: transparent;
   user-select: none;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeIn 1s ease forwards;
+  animation-delay: 1.5s;
 }
 
 .home p {
   width: 50%;
-  color: light-dark(#26a82d, #d8cf83);
+  color: light-dark(rebeccapurple, #d8cf83);
   font-weight: 700;
   font-family: Poppins;
   user-select: none;
+  transform: translateY(20px);
+  opacity: 0;
+  animation: fadeIn 1s ease forwards;
+  animation-delay: 2s;
 }
 
 .home .btn {
@@ -44,6 +52,10 @@
   color: #f1eded;
   border: none;
   cursor: pointer;
+  transform: translateY(20px);
+  opacity: 0;
+  animation: fadeIn 1s ease forwards;
+  animation-delay: 2.5s;
 }
 
 .home .btn::before {
@@ -83,15 +95,6 @@
   background-position: 100% 10%;
 }
 
-.zoom {
-  animation: zoomIn 1s linear;
-  overflow: hidden;
-}
-
-.updown {
-  animation: upDown 3s linear infinite;
-}
-
 @media screen and (max-width: 600px) {
   .home h1 {
     width: 100%;
@@ -105,33 +108,22 @@
 }
 
 @media (prefers-color-scheme: light) {
+  .home {
+    background-image: linear-gradient(86.9deg, #fdbd26 28.3%, #fd6d26 118.2%);
+    background: radial-gradient(
+          34.99px at 50% calc(100% - 48px),
+          #26fdf2 99%,
+          #0000 101%
+        )
+        calc(50% - 60px) 0/120px 100%,
+      radial-gradient(34.99px at 50% calc(100% + 18px), #0000 99%, #26fdf2 101%)
+        50% calc(100% - 30px) / 120px 100% repeat-x;
+  }
   .home h1 {
     background-image: linear-gradient(to right, #ec00f9, #00d8f9);
   }
   .home .btn::after,
   .home .btn::before {
     background-image: linear-gradient(45deg, #ec00f9, #00d8f9, #ec00f9);
-  }
-}
-
-@keyframes zoomIn {
-  from {
-    font-size: 0;
-    filter: blur(20px);
-  }
-  to {
-    filter: blur(0px);
-  }
-}
-
-@keyframes upDown {
-  0% {
-    transform: translateY(10px);
-  }
-  50% {
-    transform: translateY(0);
-  }
-  100% {
-    transform: translateY(10px);
   }
 }

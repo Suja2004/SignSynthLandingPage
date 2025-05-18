@@ -15,6 +15,8 @@
   font-family: "Audiowide", sans-serif;
   font-size: 1rem;
   cursor: pointer;
+  position: fixed;
+  top: 100%;
 }
 
 .footer h2 {
@@ -22,6 +24,9 @@
   background-clip: text;
   color: transparent;
   filter: drop-shadow(0 3px 0 #000);
+  animation: appear linear;
+  animation-timeline: view();
+  animation-range: entry 10%;
 }
 
 @media (prefers-color-scheme: light) {
@@ -31,5 +36,79 @@
   .footer h2 {
     background-image: linear-gradient(to right, #fff);
     filter: drop-shadow(0 3px 0 #3cf);
+  }
+}
+
+.loader-wrapper {
+  transition: opacity 1s ease;
+  opacity: 1;
+  pointer-events: all;
+}
+
+.loader-wrapper.fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.app-content {
+  opacity: 0;
+  animation: fadeIn 1s ease forwards;
+  animation-delay: 0.5s;
+}
+
+@keyframes fadeIn {
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes appear {
+  0% {
+    opacity: 0;
+    scale: 0.4;
+  }
+  100% {
+    opacity: 1;
+    scale: 1;
+  }
+}
+
+@keyframes appearLeft {
+  0% {
+    opacity: 0;
+    scale: 0.4;
+    transform: translateX(-100%);
+  }
+  100% {
+    opacity: 1;
+    scale: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes appearRight {
+  0% {
+    opacity: 0;
+    scale: 0.4;
+    transform: translateX(100%);
+  }
+  100% {
+    opacity: 1;
+    scale: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes appearBottom {
+  0% {
+    opacity: 0;
+    scale: 0.4;
+    transform: translateY(100%);
+  }
+  100% {
+    opacity: 1;
+    scale: 1;
+    transform: translateY(0);
   }
 }

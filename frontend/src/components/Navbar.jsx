@@ -21,10 +21,21 @@ function Navbar() {
         return () => document.removeEventListener('click', closeMenu);
     }, [isMenuOpen]);
 
+    useEffect(() => {
+        const hash = location.hash;
+        if (hash) {
+            const target = document.querySelector(hash);
+            if (target) {
+                setTimeout(() => {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }, 100);
+            }
+        }
+    }, [location]);
 
     useEffect(() => {
         let hash = location.hash.replace('#', '') || 'home';
-        if(location.pathname === '/team') hash = 'team';
+        if (location.pathname === '/team') hash = 'team';
         setActiveSection(hash);
     }, [location]);
 

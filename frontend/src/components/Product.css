@@ -6,11 +6,13 @@
   text-align: center;
   font-family: Poppins;
   overflow-x: clip;
+  padding: 2rem 0;
 }
 
 .product .overview {
   width: 75%;
   height: 300px;
+  padding: 0 1rem;
   margin: auto;
   display: flex;
   justify-content: center;
@@ -21,12 +23,37 @@
     rgba(255, 255, 255, 0.3),
     rgba(0, 0, 0, 0.6)
   );
+  transition: all 0.4s ease-in-out;
+}
+
+.product .overview .content h1 {
+  transform: translateY(100px) translateX(-100px);
+  transition: all 0.4s ease-in-out;
+}
+
+.product .overview .content p {
+  opacity: 0;
+  transition: all 0.4s ease-in-out;
 }
 
 .product .overview img {
   width: 50%;
   object-fit: contain;
   border-radius: 1rem;
+  transform: translateX(-200px);
+  transition: all 0.4s ease-in-out;
+}
+
+.product .overview:hover .content h1 {
+  transform: translateY(0) translateX(0);
+}
+
+.product .overview:hover img {
+  transform: translateX(0);
+}
+
+.product .overview:hover .content p {
+  opacity: 1;
 }
 
 .product .features {
@@ -50,15 +77,27 @@
 
 #feature1 {
   grid-area: item1;
+  animation: appearLeft linear;
+  animation-timeline: view();
+  animation-range: entry 0% cover 40%;
 }
 #feature2 {
   grid-area: item2;
+  animation: appear linear;
+  animation-timeline: view();
+  animation-range: entry 0% cover 40%;
 }
 #feature3 {
   grid-area: item3;
+  animation: appear linear;
+  animation-timeline: view();
+  animation-range: entry 0% cover 40%;
 }
 #feature4 {
   grid-area: item4;
+  animation: appearRight linear;
+  animation-timeline: view();
+  animation-range: entry 0% cover 40%;
 }
 
 .product .features .featureslist .feature {
@@ -66,7 +105,6 @@
   border: 2px solid #fff;
   border-radius: 1rem;
   padding: 0.5rem;
-  transition: all 0.4s ease-in-out;
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   background-image: linear-gradient(
@@ -75,33 +113,12 @@
     rgba(0, 0, 0, 0.6)
   );
   color: light-dark(#222, #ffef);
+  transition: all 0.4s ease-in-out;
 }
-
+.overview:hover,
 .product .features .featureslist .feature:hover {
-  background-color: light-dark(#c3f, #fff);
+  background-image: linear-gradient(120deg, #ffffffe1, #33ef);
   color: light-dark(#ffef, #222);
-}
-
-.autoShowPC {
-  animation: autoShowAnimation both linear;
-  animation-timeline: view(80% 5%);
-}
-
-.slide1 {
-  animation: slideRight both linear;
-  animation-timeline: view(80% 25%);
-}
-.slide2 {
-  animation: slideBottom both linear;
-  animation-timeline: view(80% 25%);
-}
-.slide3 {
-  animation: slideTop both linear;
-  animation-timeline: view(80% 25%);
-}
-.slide4 {
-  animation: slideLeft both linear;
-  animation-timeline: view(80% 25%);
 }
 
 @media screen and (max-width: 800px) {
@@ -112,93 +129,79 @@
     display: flex;
     flex-direction: column;
     height: auto;
+    padding: 0 0;
   }
   .product .overview img {
     width: 100%;
+    transform: translateY(-100px);
   }
-
+  .product .overview .content h1 {
+    transform: translateY(0) translateX(0);
+  }
   .product .features .featureslist {
     grid-template-columns: repeat(1, minmax(0, 1fr));
-
     grid-template-areas:
       "item1"
       "item2"
       "item3"
       "item4";
   }
+
+  #feature1 {
+    animation: appearX linear;
+    animation-timeline: view();
+    animation-range: entry 0% cover 40%;
+  }
+  #feature2 {
+    animation: appearX linear;
+    animation-timeline: view();
+    animation-range: entry 0% cover 40%;
+  }
+  #feature3 {
+    animation: appearX linear;
+    animation-timeline: view();
+    animation-range: entry 0% cover 40%;
+  }
+  #feature4 {
+    animation: appearX linear;
+    animation-timeline: view();
+    animation-range: entry 0% cover 40%;
+  }
+
+  .product .overview:hover img {
+    transform: translateY(0);
+    transition: all 0.4s ease-in-out;
+  }
 }
 
 @media (prefers-color-scheme: light) {
-  .product .overview {
-    background-image: linear-gradient(-120deg, #3cf, #c3f);
+  .product {
+    background: #ffffff9e;
   }
-
+  .product .overview,
   .product .features .featureslist .feature {
-    background-image: linear-gradient(-120deg, #3cf, #c3f);
+    background-image: linear-gradient(#74cbc771 0%, #dcf6c8 90%);
+    color: #222;
+  }
+
+  .overview:hover,
+  .product .features .featureslist .feature:hover {
+    background-image: linear-gradient(#3cf, #c3f);
+    color: #fff;
   }
 }
 
-@keyframes autoShowAnimation {
-  from {
+@keyframes appearX {
+  0% {
+    transform: translateY(200px);
     opacity: 0;
-    filter: blur(40px);
-    transform: translateY(200px) scale(0.3);
   }
-  to {
-    opacity: 1;
-    filter: blur(0px);
-    transform: translateY(0) scale(1);
+  80% {
+    transform: translateY(150px);
+    opacity: 0.5;
   }
-}
-
-@keyframes slideRight {
-  from {
-    opacity: 0;
-    filter: blur(40px);
-    transform: translateX(-300px);
-  }
-  to {
-    opacity: 1;
-    filter: blur(0px);
-    transform: translateX(0);
-  }
-}
-
-@keyframes slideBottom {
-  from {
-    opacity: 0;
-    filter: blur(40px);
-    transform: translateY(-300px);
-  }
-  to {
-    opacity: 1;
-    filter: blur(0px);
+  100% {
     transform: translateY(0);
-  }
-}
-
-@keyframes slideTop {
-  from {
-    opacity: 0;
-    filter: blur(40px);
-    transform: translateY(400px);
-  }
-  to {
     opacity: 1;
-    filter: blur(0px);
-    transform: translateX(0);
-  }
-}
-
-@keyframes slideLeft {
-  from {
-    opacity: 0;
-    filter: blur(40px);
-    transform: translateX(400px);
-  }
-  to {
-    opacity: 1;
-    filter: blur(0px);
-    transform: translateX(0);
   }
 }

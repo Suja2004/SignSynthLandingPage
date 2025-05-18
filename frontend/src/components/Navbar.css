@@ -64,12 +64,15 @@ a {
   padding: 0.5rem;
   text-decoration: none;
   z-index: 1;
-  transition: all 0.3s ease;
+  border-radius: 1rem;
+  transition: all 0.4s ease;
 }
 
 .navbar-links a:hover {
   font-size: 1.2rem;
   color: light-dark(#c3f, #334eff);
+  border-bottom: 2px solid currentColor;
+  background: #000000;
 }
 
 .hamburger {
@@ -111,13 +114,15 @@ a {
   font-size: 1.2rem;
   color: light-dark(#c3f, #334eff);
   border-bottom: 2px solid currentColor;
+  background: #000000;
+  border-radius: 1rem;
 }
 
 @media (max-width: 800px) {
   .navbar {
     width: 91%;
   }
-  
+
   .hamburger {
     display: flex;
   }
@@ -157,6 +162,12 @@ a {
   }
   .navbar {
     background-image: linear-gradient(120deg, #cc33ff80, #33ccff80);
+  }
+  .navbar-links a.active {
+    background: #fff;
+  }
+  .navbar-links a:hover {
+    background: #fff;
   }
 }
 

@@ -7,14 +7,12 @@
   user-select: none;
   font-family: "Audiowide", sans-serif;
   padding-top: 60px;
-}
-
-.team {
   mask-image: url("../assets/ink.gif");
   mask-repeat: no-repeat;
   mask-size: cover;
   mask-position: center;
 }
+
 .team .slider {
   position: absolute;
   width: 200px;
@@ -155,6 +153,9 @@
 }
 
 @media (prefers-color-scheme: light) {
+  .team {
+    background: #ffffffa5;
+  }
   .item::after,
   .item::before {
     background-image: conic-gradient(from var(--angle), #3cf, #c3f, #3cf);
@@ -175,6 +176,9 @@
 }
 
 @media screen and (max-width: 800px) {
+  .team {
+    height: 83vh;
+  }
   .team .slider:hover {
     animation-play-state: paused;
   }

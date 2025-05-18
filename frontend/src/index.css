@@ -4,19 +4,25 @@ html {
   scroll-padding-top: 90px;
 }
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   color-scheme: light dark;
-  color: #ffffffde;
   scroll-behavior: smooth;
-  background-image: linear-gradient(
-    -120deg,
-    rgba(255, 255, 255, 0.3),
-    rgba(0, 0, 0, 0.6)
-  );
+}
+body {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  color: #ffffffde;
+  background: #555;
+  background-image: url("./assets/loading/dark.png");
+  background-blend-mode: multiply;
   background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+
   --color1: light-dark(#fff, #333);
   --color2: light-dark(#3cf, #334eff);
-  user-select: none;
+}
+body {
+  overflow-x: hidden;
 }
 
 ::-webkit-scrollbar {
@@ -35,18 +41,79 @@ html {
 
 h1 {
   font-family: "Audiowide", sans-serif;
-  color: light-dark(#333333c1, #ffef);
+  color: light-dark(#000, #ffef);
 }
 
 p {
   font-family: Poppins;
 }
 
+.circle {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  height: 24px;
+  width: 24px;
+  border-radius: 50%;
+  background: #000;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  pointer-events: none;
+  box-shadow: currentColor 0 0 0 1px;
+}
+
 @media (prefers-color-scheme: light) {
-  :root {
-    background-image: linear-gradient(-120deg, #ffffff, #fff);
-  }
   body {
-    background-image: linear-gradient(-120deg, #ffffff, #fff);
+    --s: 100px;
+    --c1: #c3f; 
+    --c2: #1fc9e3; 
+    --c3: #ffffff;
+
+    background: conic-gradient(
+          from 75deg,
+          var(--c1) 15deg,
+          var(--c2) 0 30deg,
+          #0000 0 180deg,
+          var(--c2) 0 195deg,
+          var(--c1) 0 210deg,
+          #0000 0
+        )
+        calc(var(--s) / 2) calc(0.5 * var(--s) / tan(30deg)),
+      conic-gradient(
+        var(--c1) 30deg,
+        var(--c3) 0 75deg,
+        var(--c1) 0 90deg,
+        var(--c2) 0 105deg,
+        var(--c3) 0 150deg,
+        var(--c2) 0 180deg,
+        var(--c3) 0 210deg,
+        var(--c1) 0 256deg,
+        var(--c2) 0 270deg,
+        var(--c1) 0 286deg,
+        var(--c2) 0 331deg,
+        var(--c3) 0
+      );
+    background-size: var(--s) calc(var(--s) / tan(30deg));
+    animation: scroll-bg ease-in-out;
+    animation-timeline: view();
+    animation-range: entry 0% cover 500%;
+    animation-delay: 0s;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .circle {
+    display: none;
+  }
+}
+
+@keyframes scroll-bg {
+  from {
+    background-position: 0 -1000px;
+  }
+  to {
+    background-position: 0 1000px;
   }
 }

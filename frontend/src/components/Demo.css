@@ -2,6 +2,7 @@
   width: 100%;
   text-align: center;
   font-family: Poppins;
+  padding: 3rem 0;
   user-select: none;
 }
 
@@ -10,7 +11,6 @@
   height: 50%;
   display: flex;
   justify-content: center;
-  overflow-x: clip;
 }
 
 .demo p {
@@ -22,21 +22,17 @@
   display: flex;
 }
 
-.demo .container .sideByside .media {
-  scale: 0;
-  opacity: 0;
-  animation: zoom linear both;
-  animation-timeline: view(90% 5%);
-}
+.demo .container .overlay .media,
 .demo .container .sideByside .sign {
-  animation: slideLeft linear both;
-  animation-timeline: view(90% 5%);
+  animation: slideLeft linear;
+  animation-timeline: view();
+  animation-range: entry 0% cover 40%;
 }
 
-.demo .container .overlay .media {
-  position: relative;
-  animation: slideLeft linear both;
-  animation-timeline: view(90% 5%);
+.demo .container .sideByside .media {
+  animation: slideTop linear;
+  animation-timeline: view();
+  animation-range: entry 0% cover 40%;
 }
 
 .demo .container .overlay img:last-child {
@@ -66,8 +62,9 @@
     rgba(255, 255, 255, 0.3),
     rgba(0, 0, 0, 0.6)
   );
-  animation: slideRight linear both;
-  animation-timeline: view(90% 5%);
+  animation: slideRight linear;
+  animation-timeline: view();
+  animation-range: entry 0% cover 40%;
 }
 
 .demo .container .modes {
@@ -97,13 +94,6 @@
 @media screen and (max-width: 800px) {
   .demo h1 {
     font-size: 1.4rem;
-    animation: autoShowAnimation both;
-    animation-timeline: view(65% 5%);
-  }
-
-  .demo p {
-    animation: autoShowAnimation both;
-    animation-timeline: view(80% 5%);
   }
 
   .demo .container {
@@ -111,15 +101,11 @@
     margin: auto;
     display: flex;
     flex-direction: column;
-    overflow-x: clip;
   }
-
   .demo .container .modeButtons {
-    scale: 0.8;
-    opacity: 0;
-    animation: fadeIn linear forwards;
+    animation: appear linear;
     animation-timeline: view();
-    animation-range: 250px 500px;
+    animation-range: entry 0% cover 40%;
   }
 
   .demo .container .modeButtons .modes {
@@ -135,46 +121,68 @@
   .demo .container .overlay img:last-child {
     width: 150px;
   }
-
+  
   .demo .container .sideByside .media {
-    scale: 1;
-    opacity: 1;
-    animation: slideRight both;
-    animation-timeline: view(65% 5%);
-  }
-
-  .demo .container .sideByside .sign {
-    animation: slideLeft both;
-    animation-timeline: view(65% 5%);
+    animation: slideRight linear;
+    animation-timeline: view();
+    animation-range: entry 0% cover 40%;
   }
 
   .demo .container .overlay .media {
     position: relative;
-    scale: 0;
-    opacity: 0;
-    animation: zoom linear forwards;
+    animation: appearX linear;
     animation-timeline: view();
-    animation-range: 250px 400px;
+    animation-range: entry 0% cover 40%;
   }
 }
 
 @media (prefers-color-scheme: light) {
+  .demo {
+    background: radial-gradient(34.99px at 50% 48px, #3cf 99%, #0000 101%)
+        calc(50% - 60px) 0/120px 51% repeat-x,
+      radial-gradient(34.99px at 50% -18px, #0000 99%, #3cf 101%) 50% 30px/120px
+        calc(51% - 30px) repeat-x,
+      radial-gradient(34.99px at 50% calc(100% - 48px), #3cf 99%, #0000 101%)
+        50% 100%/120px 51% repeat-x,
+      radial-gradient(34.99px at 50% calc(100% + 18px), #0000 99%, #3cf 101%)
+        calc(50% - 60px) calc(100% - 30px) / 120px calc(51% - 30px) repeat-x;
+  }
   .demo .container .modeButtons,
   .demo .sideByside img {
     background-image: linear-gradient(-120deg, #3cf, #c3f);
   }
 }
 
-@keyframes zoom {
-  to {
-    scale: 1;
+@keyframes slideRight {
+  0% {
+    opacity: 0;
+    transform: translateX(-100px) translateY(100px);
+  }
+
+  100% {
     opacity: 1;
+    transform: translateX(0px) translateY(0px);
   }
 }
 
-@keyframes fadeIn {
+@keyframes slideLeft {
+  from {
+    opacity: 0;
+    transform: translateX(50px) translateY(100px);
+  }
   to {
-    scale: 1;
     opacity: 1;
+    transform: translateX(0) translateY(0px);
+  }
+}
+
+@keyframes slideTop {
+  from {
+    opacity: 0;
+    transform: translateY(300px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

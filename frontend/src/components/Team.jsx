@@ -66,7 +66,6 @@ function Team() {
     return (
         <>
             <div id='team' className='team section'>
-                <h1>Meet The Team</h1>
                 <div className="slider" style={{ "--quantity": teamMembers.length }}>
                     {teamMembers.map((member, index) => (
                         <div className="item" style={{ "--position": index + 1 }} key={member.usn}>
@@ -74,7 +73,6 @@ function Team() {
                                 <img src={member.img} alt={member.name} />
                                 <h3>{member.name}</h3>
                                 <h4>{member.usn}</h4>
-                                <p>{member.role}</p>
                                 <div className="info">
                                     <p>{member.description}  </p>
                                     <div className="socials">

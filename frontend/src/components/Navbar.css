@@ -118,7 +118,7 @@ a {
   border-radius: 1rem;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 900px) {
   .navbar {
     width: 91%;
   }
@@ -130,10 +130,9 @@ a {
   .navbar-links {
     width: 100%;
     text-align: center;
-    display: none;
     position: fixed;
     top: 100%;
-    left: 0;
+    left: -100%;
     background-color: transparent;
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
@@ -142,11 +141,15 @@ a {
     padding: 1rem;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     z-index: 1000;
-    animation: slideRight 0.5s ease;
+    overflow: hidden;
+    transition: all 0.5s ease-in;
+    display: flex;
+    filter: blur(10px);
   }
 
   .navbar-links.open {
-    display: flex;
+    left: 0;
+    filter: blur(0px);
   }
 
   .navbar-links li {
@@ -168,18 +171,6 @@ a {
   }
   .navbar-links a:hover {
     background: #fff;
-  }
-}
-
-@keyframes slideRight {
-  0% {
-    opacity: 0;
-    transform: translateX(-100px);
-  }
-
-  100% {
-    opacity: 1;
-    transform: translateX(0px);
   }
 }
 

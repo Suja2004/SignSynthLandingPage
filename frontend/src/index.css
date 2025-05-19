@@ -103,9 +103,12 @@ p {
   }
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 900px) {
   .circle {
     display: none;
+  }
+  .footer h2{
+    font-size: 1.2rem;
   }
 }
 

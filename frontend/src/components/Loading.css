@@ -50,7 +50,13 @@ svg path {
 }
 
 @media (prefers-color-scheme: light) {
-  .banner::before  {
-  background-image: url("../assets/loading/light.png");
+  .banner::before {
+    background-image: url("../assets/loading/light.png");
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .title {
+    scale: 0.7;
   }
 }

@@ -5,34 +5,38 @@
   box-sizing: border-box;
   text-align: center;
   font-family: Poppins;
-  overflow-x: clip;
   padding: 2rem 0;
 }
 
 .product .overview {
   width: 75%;
   height: 300px;
-  padding: 0 1rem;
   margin: auto;
   display: flex;
   justify-content: center;
-  border: 2px solid #fff;
   border-radius: 1rem;
   background-image: linear-gradient(
     120deg,
     rgba(255, 255, 255, 0.3),
     rgba(0, 0, 0, 0.6)
   );
+  box-shadow: 0 3px 10px currentColor, 0 5px 20px #33ef;
+
   transition: all 0.4s ease-in-out;
+  &:hover {
+    background-image: linear-gradient(-20deg, #ffffffe1, #33ef);
+  }
 }
 
 .product .overview .content h1 {
-  transform: translateY(100px) translateX(-100px);
+  transform: translateY(350%) translateX(-20%);
   transition: all 0.4s ease-in-out;
 }
 
 .product .overview .content p {
+  padding: 0 1rem;
   opacity: 0;
+  color: #ffef;
   transition: all 0.4s ease-in-out;
 }
 
@@ -40,7 +44,7 @@
   width: 50%;
   object-fit: contain;
   border-radius: 1rem;
-  transform: translateX(-200px);
+  transform: translateX(-30%);
   transition: all 0.4s ease-in-out;
 }
 
@@ -102,7 +106,7 @@
 
 .product .features .featureslist .feature {
   min-height: max-content;
-  border: 2px solid #fff;
+  box-shadow: 0 3px 10px currentColor, 0 3px 10px #33ef;
   border-radius: 1rem;
   padding: 0.5rem;
   backdrop-filter: blur(20px);
@@ -115,13 +119,12 @@
   color: light-dark(#222, #ffef);
   transition: all 0.4s ease-in-out;
 }
-.overview:hover,
 .product .features .featureslist .feature:hover {
   background-image: linear-gradient(120deg, #ffffffe1, #33ef);
   color: light-dark(#ffef, #222);
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 900px) {
   .product h1 {
     font-size: 1.4rem;
   }

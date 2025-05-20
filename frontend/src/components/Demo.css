@@ -84,6 +84,7 @@
   transition: all 0.5s;
   border-radius: 1rem;
 }
+
 .demo .container .modes button:hover,
 .demo .container .modes button.active {
   background: light-dark(#3cf, #fff);
@@ -149,6 +150,7 @@
   .demo .container .modeButtons {
     background: transparent;
   }
+  .demo .container .modes button.active,
   .demo .container .modeButtons button:hover {
     background: #fff;
     color: #3cf;

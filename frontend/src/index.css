@@ -41,7 +41,7 @@ body {
 
 h1 {
   font-family: "Audiowide", sans-serif;
-  color: light-dark(#000, #ffef);
+  color: light-dark(#333, #ffef);
 }
 
 p {

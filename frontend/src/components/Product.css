@@ -119,6 +119,7 @@
   color: light-dark(#222, #ffef);
   transition: all 0.4s ease-in-out;
 }
+
 .product .features .featureslist .feature:hover {
   background-image: linear-gradient(120deg, #ffffffe1, #33ef);
   color: light-dark(#ffef, #222);
@@ -187,7 +188,7 @@
     color: #222;
   }
 
-  .overview:hover,
+  .product .overview:hover,
   .product .features .featureslist .feature:hover {
     background-image: linear-gradient(#3cf, #c3f);
     color: #fff;

@@ -26,10 +26,10 @@ body {
 }
 
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 0;
   height: 10px;
 }
-
+/* 
 ::-webkit-scrollbar-track {
   background-color: var(--color1);
 }
@@ -37,7 +37,7 @@ body {
 ::-webkit-scrollbar-thumb {
   border-radius: 1rem;
   background-image: linear-gradient(to top, var(--color2) 10%, transparent 80%);
-}
+} */
 
 h1 {
   font-family: "Audiowide", sans-serif;

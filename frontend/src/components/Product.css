@@ -6,6 +6,8 @@
   text-align: center;
   font-family: Poppins;
   padding: 2rem 0;
+  /* Add overflow-x: hidden to prevent horizontal scrollbar from animations */
+  overflow-x: hidden;
 }
 
 .product .overview {
@@ -79,30 +81,52 @@
     "item3 item4 item4";
 }
 
+/* --- ANIMATION LOGIC START --- */
+
+/* 1. Set the default "hidden" state for all animated elements */
+.autoShow {
+  opacity: 0;
+  transform: translateY(40px); /* Default: fade up */
+  /* This transition will play when the 'is-visible' class is added */
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+/* 2. Set specific "hidden" states for the slides */
+.autoShow.slide1 {
+  transform: translateX(-100px);
+}
+.autoShow.slide4 {
+  transform: translateX(100px);
+}
+
+/* 3. Define the "visible" state */
+.autoShow.is-visible {
+  opacity: 1;
+  transform: translateY(0) translateX(0); /* Resets all transforms to 0 */
+}
+
+/* 4. Remove all the old animation properties */
 #feature1 {
   grid-area: item1;
-  animation: appearLeft linear;
-  animation-timeline: view();
-  animation-range: entry 0% cover 40%;
+  /* animation: appearLeft linear; (REMOVED) */
+  /* animation-timeline: view(); (REMOVED) */
+  /* animation-range: entry 0% cover 40%; (REMOVED) */
 }
 #feature2 {
   grid-area: item2;
-  animation: appear linear;
-  animation-timeline: view();
-  animation-range: entry 0% cover 40%;
+  /* (All animation properties REMOVED) */
 }
 #feature3 {
   grid-area: item3;
-  animation: appear linear;
-  animation-timeline: view();
-  animation-range: entry 0% cover 40%;
+  /* (All animation properties REMOVED) */
 }
 #feature4 {
   grid-area: item4;
-  animation: appearRight linear;
-  animation-timeline: view();
-  animation-range: entry 0% cover 40%;
+  /* (All animation properties REMOVED) */
 }
+
+/* --- ANIMATION LOGIC END --- */
+
 
 .product .features .featureslist .feature {
   min-height: max-content;
@@ -151,27 +175,32 @@
       "item4";
   }
 
+  /* --- ANIMATION LOGIC (Mobile) --- */
+  
+  /* On mobile, make all slides just fade up */
+  .autoShow.slide1,
+  .autoShow.slide2,
+  .autoShow.slide3,
+  .autoShow.slide4 {
+    transform: translateY(100px);
+  }
+  
+  /* (The .is-visible class will reset this to 0, creating the fade-up) */
+
+  /* 4. Remove all the old mobile animation properties */
   #feature1 {
-    animation: appearX linear;
-    animation-timeline: view();
-    animation-range: entry 0% cover 40%;
+    /* (All animation properties REMOVED) */
   }
   #feature2 {
-    animation: appearX linear;
-    animation-timeline: view();
-    animation-range: entry 0% cover 40%;
+    /* (All animation properties REMOVED) */
   }
   #feature3 {
-    animation: appearX linear;
-    animation-timeline: view();
-    animation-range: entry 0% cover 40%;
+    /* (All animation properties REMOVED) */
   }
   #feature4 {
-    animation: appearX linear;
-    animation-timeline: view();
-    animation-range: entry 0% cover 40%;
+    /* (All animation properties REMOVED) */
   }
-
+  
   .product .overview:hover img {
     transform: translateY(0);
     transition: all 0.4s ease-in-out;
@@ -192,20 +221,5 @@
   .product .features .featureslist .feature:hover {
     background-image: linear-gradient(#3cf, #c3f);
     color: #fff;
-  }
-}
-
-@keyframes appearX {
-  0% {
-    transform: translateY(200px);
-    opacity: 0;
-  }
-  80% {
-    transform: translateY(150px);
-    opacity: 0.5;
-  }
-  100% {
-    transform: translateY(0);
-    opacity: 1;
   }
 }

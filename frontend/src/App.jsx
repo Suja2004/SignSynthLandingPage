@@ -11,9 +11,6 @@ import Team from './components/Team';
 import Loading from './components/Loading';
 
 function App() {
-  // 1. Check sessionStorage on initial load.
-  // If 'hasLoadedBefore' is 'true', we've visited, so set loading to false.
-  // Otherwise (if it's null or false), set loading to true.
   const [loading, setLoading] = useState(
     sessionStorage.getItem('hasLoadedBefore') !== 'true'
   );
@@ -22,20 +19,18 @@ function App() {
   const coords = useRef({ x: 0, y: 0 });
   const circleRefs = useRef([]);
 
-  // 2. This useEffect now only runs if 'loading' is true
   useEffect(() => {
     if (loading) {
       const timer = setTimeout(() => {
         setFadeOut(true);
         setTimeout(() => {
           setLoading(false);
-          // 3. Set the flag in sessionStorage once loading is complete
           sessionStorage.setItem('hasLoadedBefore', 'true');
-        }, 1000); // Fade-out duration
-      }, 5000); // Loading screen duration
+        }, 1000);
+      }, 5000); 
       return () => clearTimeout(timer);
     }
-  }, [loading]); // Dependency array ensures this runs if 'loading' changes
+  }, [loading]);
 
   const circles = useMemo(() => {
     return Array.from({ length: 30 }, (_, i) => {

@@ -30,7 +30,7 @@ const teamMembers = [
         role: "Member",
         description: "Enthusiastic about competitive programming and AI. Enjoys exploring new tech trends and building side projects in Python and JavaScript.",
         socials: [
-            { icon: link, alt: "LinkedIn", url: "https://linkedin.com/in/sathwik" },
+            { icon: link, alt: "LinkedIn", url: "https://linkedin.com/in/sathwik-rao-804789330" },
             { icon: insta, alt: "Instagram", url: "https://instagram.com/sathwik" },
             { icon: tweet, alt: "Twitter", url: "https://twitter.com/sathwik" }
         ]
@@ -42,8 +42,8 @@ const teamMembers = [
         role: "Member",
         description: "Full-stack web developer who enjoys working on MERN projects. Loves coding, designing user interfaces, and building projects.",
         socials: [
-            { icon: git, alt: "GitHub", url: "https://github.com/Suja2004" },
             { icon: link, alt: "LinkedIn", url: "https://www.linkedin.com/in/sujan-kumar-k164" },
+            { icon: git, alt: "GitHub", url: "https://github.com/Suja2004" },
             { icon: tweet, alt: "Twitter", url: "https://x.com/SujaK2004" }
         ]
     },
@@ -54,7 +54,7 @@ const teamMembers = [
         role: "Member",
         description: "Cybersecurity enthusiast and system-level programmer. Interested in ethical hacking, CTFs, and exploring Linux internals.",
         socials: [
-            { icon: link, alt: "LinkedIn", url: "https://linkedin.com/in/vijay-telang" },
+            { icon: link, alt: "LinkedIn", url: "https://linkedin.com/in/vijay-telang-44b638280" },
             { icon: insta, alt: "Instagram", url: "https://instagram.com/vijay_telang" },
             { icon: tweet, alt: "Twitter", url: "https://twitter.com/vijay_telang" }
         ]

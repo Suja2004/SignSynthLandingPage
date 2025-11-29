@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom'; 
 import './Navbar.css';
 import logo from '../assets/SignSynthLogo.png';
 
 function Navbar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const [activeSection, setActiveSection] = useState('home');
+    const [activeLink, setActiveLink] = useState('home');
     const location = useLocation();
 
     const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
@@ -21,27 +21,51 @@ function Navbar() {
         return () => document.removeEventListener('click', closeMenu);
     }, [isMenuOpen]);
 
+    const scrollToSection = (id) => {
+        const element = document.getElementById(id);
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+            setActiveLink(id);
+        }
+    };
+
     useEffect(() => {
-        const hash = location.hash;
-        if (hash) {
-            const target = document.querySelector(hash);
-            if (target) {
-                setTimeout(() => {
-                    target.scrollIntoView({ behavior: 'smooth' });
-                }, 100);
-            }
+        if (location.pathname === '/' && location.hash) {
+            const id = location.hash.replace('#', '');
+            setTimeout(() => {
+                scrollToSection(id);
+            }, 100);
+        } else if (location.pathname === '/team') {
+            setActiveLink('team');
+        } else {
+             setActiveLink('home');
         }
     }, [location]);
 
     useEffect(() => {
-        let hash = location.hash.replace('#', '') || 'home';
-        if (location.pathname === '/team') hash = 'team';
-        setActiveSection(hash);
-    }, [location]);
+        const handleScroll = () => {
+            if (location.pathname !== '/') return; 
+
+            const sections = document.querySelectorAll('section');
+            const scrollPosition = window.pageYOffset;
+
+            sections.forEach((section) => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.offsetHeight;
+                const id = section.getAttribute('id');
+                
+                if (scrollPosition >= sectionTop - 150 && scrollPosition < sectionTop + sectionHeight) {
+                     setActiveLink(id);
+                }
+            });
+        }; 
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, [location.pathname]);
 
     return (
         <div className="navbar">
-            <a className="logo" href="/#home" onClick={() => setActiveSection('home')}>
+            <a className="logo" href="/#home" onClick={() => setActiveLink('home')}>
                 <img src={logo} alt="SignSynth Logo" />
                 <h2>SignSynth</h2>
             </a>
@@ -53,30 +77,34 @@ function Navbar() {
             </div>
 
             <nav className={`navbar-links ${isMenuOpen ? 'open' : ''}`}>
-                <li>
-                    <a href="/#home" className={`homelink ${activeSection === 'home' ? 'active' : ''}`}>
-                        HOME
-                    </a>
-                </li>
-                <li>
-                    <a href="/#product" className={`productlink ${activeSection === 'product' ? 'active' : ''}`}>
-                        PRODUCT
-                    </a>
-                </li>
-                <li>
-                    <a href="/#demo" className={`demolink ${activeSection === 'demo' ? 'active' : ''}`}>
-                        DEMO
-                    </a>
-                </li>
-                <li>
-                    <NavLink
-                        to="/team"
-                        className={`teamlink ${activeSection === 'team' ? 'active' : ''}`}
-                        onClick={() => setActiveSection('team')}
+                {['home', 'product', 'demo'].map((id, i) => (
+                    <a
+                        key={id}
+                        href={`/#${id}`}
+                        onClick={(e) => {
+                            if (location.pathname === '/' || location.pathname === '') {
+                                e.preventDefault();
+                                scrollToSection(id);
+                            } 
+                            setIsMenuOpen(false);
+                        }}
+                        className={activeLink === id ? 'active' : ''}
+                        style={{ '--delay': `${(i + 2) * 0.4}s` }}
                     >
-                        TEAM
-                    </NavLink>
-                </li>
+                        {id.toUpperCase()}
+                    </a>
+                ))}
+                
+                <NavLink
+                    to="/team"
+                    className={`teamlink ${activeLink === 'team' ? 'active' : ''}`}
+                    onClick={() => {
+                        setActiveLink('team');
+                        setIsMenuOpen(false);
+                    }}
+                >
+                    TEAM
+                </NavLink>
             </nav>
         </div>
     );

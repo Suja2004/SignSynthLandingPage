@@ -6,7 +6,6 @@
   text-align: center;
   font-family: Poppins;
   padding: 2rem 0;
-  /* Add overflow-x: hidden to prevent horizontal scrollbar from animations */
   overflow-x: hidden;
 }
 
@@ -16,18 +15,32 @@
   margin: auto;
   display: flex;
   justify-content: center;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
   border-radius: 1rem;
+  box-shadow: 0 3px 10px currentColor, 0 5px 20px #3333ee84;
   background-image: linear-gradient(
     120deg,
     rgba(255, 255, 255, 0.3),
     rgba(0, 0, 0, 0.6)
   );
-  box-shadow: 0 3px 10px currentColor, 0 5px 20px #33ef;
+  transition: box-shadow 0.4s ease-in-out, transform 0.4s ease-in-out;
+}
 
-  transition: all 0.4s ease-in-out;
-  &:hover {
-    background-image: linear-gradient(-20deg, #ffffffe1, #33ef);
-  }
+.product .overview::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background-image: linear-gradient(-20deg, #ffffffe1, #33ef);
+  opacity: 0;
+  transition: opacity 0.4s ease-in-out;
+}
+
+.product .overview:hover::before {
+  opacity: 1;
 }
 
 .product .overview .content h1 {
@@ -81,17 +94,12 @@
     "item3 item4 item4";
 }
 
-/* --- ANIMATION LOGIC START --- */
-
-/* 1. Set the default "hidden" state for all animated elements */
 .autoShow {
   opacity: 0;
-  transform: translateY(40px); /* Default: fade up */
-  /* This transition will play when the 'is-visible' class is added */
+  transform: translateY(40px);
   transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
-/* 2. Set specific "hidden" states for the slides */
 .autoShow.slide1 {
   transform: translateX(-100px);
 }
@@ -99,54 +107,54 @@
   transform: translateX(100px);
 }
 
-/* 3. Define the "visible" state */
 .autoShow.is-visible {
   opacity: 1;
-  transform: translateY(0) translateX(0); /* Resets all transforms to 0 */
+  transform: translateY(0) translateX(0);
 }
 
-/* 4. Remove all the old animation properties */
 #feature1 {
   grid-area: item1;
-  /* animation: appearLeft linear; (REMOVED) */
-  /* animation-timeline: view(); (REMOVED) */
-  /* animation-range: entry 0% cover 40%; (REMOVED) */
 }
 #feature2 {
   grid-area: item2;
-  /* (All animation properties REMOVED) */
 }
 #feature3 {
   grid-area: item3;
-  /* (All animation properties REMOVED) */
 }
 #feature4 {
   grid-area: item4;
-  /* (All animation properties REMOVED) */
 }
-
-/* --- ANIMATION LOGIC END --- */
-
-
 .product .features .featureslist .feature {
+  position: relative;
+  z-index: 1;
   min-height: max-content;
   box-shadow: 0 3px 10px currentColor, 0 3px 10px #33ef;
   border-radius: 1rem;
   padding: 0.5rem;
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  background-image: linear-gradient(
+  background: linear-gradient(
     -120deg,
     rgba(255, 255, 255, 0.3),
     rgba(0, 0, 0, 0.6)
   );
   color: light-dark(#222, #ffef);
-  transition: all 0.4s ease-in-out;
+  overflow: hidden;
 }
 
-.product .features .featureslist .feature:hover {
-  background-image: linear-gradient(120deg, #ffffffe1, #33ef);
-  color: light-dark(#ffef, #222);
+.product .features .featureslist .feature::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background: linear-gradient(120deg, #ffffffe1, #33ef);
+  opacity: 0;
+  transition: opacity 0.8s linear;
+}
+
+.product .features .featureslist .feature:hover::before {
+  opacity: 1;
 }
 
 @media screen and (max-width: 900px) {
@@ -175,32 +183,13 @@
       "item4";
   }
 
-  /* --- ANIMATION LOGIC (Mobile) --- */
-  
-  /* On mobile, make all slides just fade up */
   .autoShow.slide1,
   .autoShow.slide2,
   .autoShow.slide3,
   .autoShow.slide4 {
     transform: translateY(100px);
   }
-  
-  /* (The .is-visible class will reset this to 0, creating the fade-up) */
 
-  /* 4. Remove all the old mobile animation properties */
-  #feature1 {
-    /* (All animation properties REMOVED) */
-  }
-  #feature2 {
-    /* (All animation properties REMOVED) */
-  }
-  #feature3 {
-    /* (All animation properties REMOVED) */
-  }
-  #feature4 {
-    /* (All animation properties REMOVED) */
-  }
-  
   .product .overview:hover img {
     transform: translateY(0);
     transition: all 0.4s ease-in-out;

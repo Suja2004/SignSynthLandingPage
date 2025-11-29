@@ -17,13 +17,10 @@ function Demo() {
         }, {
             threshold: 0.1
         });
-
         const targets = document.querySelectorAll('.animate-on-scroll');
         targets.forEach((target) => observer.observe(target));
-
         return () => observer.disconnect();
     }, []);
-
 
     return (
         <section
@@ -31,21 +28,20 @@ function Demo() {
             className="demo section"
         >
             <h1>Experience Real-Time Sign Language Translation</h1>
-            <p>Watch how SignSynth transforms speech or text into sign language gestures using AI-powered avatars.</p>
+            <p>Watch how SignSynth transforms speech into sign language gestures using 3D avatar.</p>
 
             <div className="container">
                 <div className="sideByside">
-                    <div className="media animate-on-scroll slide-right" ref={mediaRef}>
-                        <img src={media} alt="nice-to-meet-you-in-media" />
-                    </div>
-
-                    <div className="sign static animate-on-scroll slide-left">
+                    <div className="sign static animate-on-scroll slide-right">
                         <img src={sign} alt="nice-to-meet-you-sign-language" />
+                    </div>
+                    <div className="media animate-on-scroll slide-left" ref={mediaRef}>
+                        <img src={media} alt="nice-to-meet-you-in-media" />
                     </div>
                 </div>
             </div>
 
-            <p><b>Note:</b> This is a prototype. Real-time translation performance may vary depending on your device or browser.</p>
+            <p><b>Note:</b> This is a prototype. Real-time translation performance may vary depending on your device.</p>
         </section>
     );
 }
